@@ -14,6 +14,6 @@ app.use('/', usersRoutes);
 
 
 
-app.listen(process.env.PROT, () => {
-  console.log(`Example app listening on port ${process.env.PROT}`)
+app.listen(process.env.PORT, () => {
+  console.log(`Example app listening on port ${process.env.PORT}`)
 })
