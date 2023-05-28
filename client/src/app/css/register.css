@@ -1,0 +1,54 @@
+.form-box{
+    border: 2px solid black;
+    width: 400px;
+    height: 530px;
+    background-color: aqua;
+    text-align: center;
+    margin: 100px auto;
+    border-radius: 10px;
+    color: rgb(17, 23, 27);
+}
+
+.firstName{
+    width: 270px;
+    height: 15px;
+    margin: 10px;
+    border-radius: 5px;
+    padding: 10px;
+}
+.lastName{
+    width: 270px;
+    height: 15px;
+    margin: 10px;
+    border-radius: 5px;
+    padding: 10px;
+}
+.contact{
+    width: 270px;
+    height: 15px;
+    margin: 10px;
+    border-radius: 5px;
+    padding: 10px;
+}
+.userIdentityField{
+    width: 270px;
+    height: 15px;
+    margin: 10px;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.password{
+    width: 270px;
+    height: 15px;
+    margin: 10px;
+    border-radius: 5px;
+    padding: 10px;
+}
+button{
+    padding: 7px;
+    border: 2px solid black;
+    border-radius: 5px;
+    font-weight: bold;
+    margin: 20px;
+}

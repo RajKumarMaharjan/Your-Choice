@@ -6,7 +6,9 @@
 .header{
   background-color: aqua;
   height: 100px;
+  display: flex;
 }
+
 
 .product{
   background-color: red;
