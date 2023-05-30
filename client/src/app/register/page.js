@@ -30,7 +30,7 @@ function checkValidity(values) {
 }
 
 // creating schema
-const Schema = Yup.object().shape({
+const schema = Yup.object().shape({
   firstName: Yup.string()
     .min(2, 'Too Short!')
     .max(100, 'Too Long!')
@@ -88,6 +88,7 @@ const Register = () => {
     <div className='form-box'>
       <h1>Sign up</h1>
       <Formik
+      validationSchema={schema}
         initialValues={{
           firstName: '',
           lastName: '',
@@ -140,8 +141,9 @@ const Register = () => {
         open={open}
         message="Popup"
         onClose={handleClose}
-        autoHideDuration={5000}
+        autoHideDuration={3000}
       />
+
 
 
     </div>
