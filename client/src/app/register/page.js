@@ -27,8 +27,14 @@ function checkValidity(values) {
       return ['password', false]
     }
   }
+  else {
+    if (values?.length < 3 || !values) {
+      return ['username', false]
+    } else {
+      return ['username', true]
+    }
+  }
 }
-
 // creating schema
 const schema = Yup.object().shape({
   firstName: Yup.string()
@@ -46,9 +52,10 @@ const schema = Yup.object().shape({
   password: Yup.string()
     .min(8, ' Password must be at least 8 characters')
     .required('Required')
-    .test('password dont allow multiple spaces', ()=> 'password should not have multiple spaces', (value)=> !value.includes('  ')),
+    .test('password dont allow multiple spaces', () => 'password should not have multiple spaces', (value) => !value.includes('  ')),
   email: Yup.string().email('Invalid email').required('Required'),
- 
+  userIdentityField: Yup.string()
+    .test(`validate userIdentityField`, (item) => 'invalid ' + checkValidity(item?.value)[0], (value) => value?.length > 0 && checkValidity(value)[1]),
 
 });
 
@@ -69,18 +76,18 @@ const Register = () => {
 
       const requestOptions = {
         method: 'POST',
-        headers: { 'Content-type': 'application/json' },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(values)
       }
       const res = await fetch('http://localhost:8080/register', requestOptions)
-      const data = await res.json()
-      if (res.status == 200 && data) {
-        setOpen(true)
-        alert("user registeration success")
-      }
-    } catch (err) {
+     const data = await res.json()
+     if(res.status == 200 && data){
       setOpen(true)
-      alert("registration failed")
+       alert("user registration success")
+      }
+    } catch(err){
+      setOpen(true)
+        alert("registration failed")
     }
   }
 
@@ -88,8 +95,8 @@ const Register = () => {
     <div className='form-box'>
       <h1>Sign up</h1>
       <Formik
-      validationSchema={schema}
-        initialValues={{
+         validationSchema={schema}
+         initialValues={{
           firstName: '',
           lastName: '',
           PhoneNo: '',
@@ -98,61 +105,65 @@ const Register = () => {
         }}
 
         onSubmit={(values, { resetForm }) => {
-          handleRegister(values, resetForm)
+          // Alert the input values of the form that we filled
+          handleRegister(values,resetForm)
         }}
       >
         {({
-          values,
-          errors,
-          touched,
-          handleChange,
-          handleBlur,
-          handleSubmit,
-         }) => (
+           values,
+           errors,
+           touched,
+           handleChange,
+           handleBlur,
+           handleSubmit,
+        }) => (
           <Form noValidate onSubmit={handleSubmit}>
             <Field
-             name="firstName" 
-            onChange={handleChange} 
-            value={values.firstName} 
-            placeholder='First Name'
-             className='firstName'
-             id="firstName"
-              />
+              name="firstName"
+              onChange={handleChange}
+              value={values.firstName}
+              id="firstName"
+              placeholder="First Name"
+              className='firstName'
+            />
             {errors.firstName && touched.firstName ? (
               <div>{errors.firstName}</div>
             ) : null}
             <Field
-             name="lastName"
+              name="lastName"
+              value={values.lastName}
               onChange={handleChange}
-               value={values.lastName} 
-               placeholder='Last Name'
-                className='lastName'
-                 />
+              placeholder="Last Name"
+              className='lastName'
+            />
             {errors.lastName && touched.lastName ? (
               <div>{errors.lastName}</div>
             ) : null}
             <Field
-             name="PhoneNo"
-              onChange={handleChange} 
-              placeholder='Phone No.' 
-              className='contact' />
+              name="PhoneNo"
+              onChange={handleChange}
+              placeholder='Phone No.'
+              className='contact'
+               />
             {errors.PhoneNo && touched.PhoneNo ? (
               <div>{errors.PhoneNo}</div>
             ) : null}
-            <Field 
-            name="userIdentityField" 
-            placeholder='Enter email id / username / phone no'
-             className='userIdentityField' />
-            {errors.userIdentityField && touched.userIdentityField ?
-             <div>{errors.userIdentityField}</div> : null}
             <Field
-             type="password"
+              name="userIdentityField"
+              placeholder='Enter email id / username / phone no'
+              className='userIdentityField'
+               />
+            {errors.userIdentityField && touched.userIdentityField ?
+              <div>{errors.userIdentityField}</div> : null}
+            <Field
+              type="password"
               name="password"
-               onChange={handleChange}
-               onBlur={handleBlur}
-                value={values.password}
-                 placeholder='password'
-                  className='password' />
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.password}
+              placeholder='password'
+              className='password' 
+              />
             {errors.password && touched.password ? (
               <div>{errors.password}</div>
             ) : null}
