@@ -45,10 +45,10 @@ const schema = Yup.object().shape({
     .required('Required'),
   password: Yup.string()
     .min(8, ' Password must be at least 8 characters')
-    .required('Required'),
+    .required('Required')
+    .test('password dont allow multiple spaces', ()=> 'password should not have multiple spaces', (value)=> !value.includes('  ')),
   email: Yup.string().email('Invalid email').required('Required'),
-  userIdentityField: Yup.string()
-    .test(`validate userIdentityField`, (item) => 'invalid ' + checkValidity(item?.value)[0], (value) => value?.length > 0 && checkValidity(value)[1]),
+ 
 
 });
 
@@ -110,21 +110,49 @@ const Register = () => {
           handleSubmit,
          }) => (
           <Form noValidate onSubmit={handleSubmit}>
-            <Field name="firstName" onChange={handleChange} value={values.firstName} placeholder='First Name' className='firstName' />
+            <Field
+             name="firstName" 
+            onChange={handleChange} 
+            value={values.firstName} 
+            placeholder='First Name'
+             className='firstName'
+             id="firstName"
+              />
             {errors.firstName && touched.firstName ? (
               <div>{errors.firstName}</div>
             ) : null}
-            <Field name="lastName" onChange={handleChange} value={values.lastName} placeholder='Last Name' className='lastName' />
+            <Field
+             name="lastName"
+              onChange={handleChange}
+               value={values.lastName} 
+               placeholder='Last Name'
+                className='lastName'
+                 />
             {errors.lastName && touched.lastName ? (
               <div>{errors.lastName}</div>
             ) : null}
-            <Field name="PhoneNo" onChange={handleChange} placeholder='Phone No.' className='contact' />
+            <Field
+             name="PhoneNo"
+              onChange={handleChange} 
+              placeholder='Phone No.' 
+              className='contact' />
             {errors.PhoneNo && touched.PhoneNo ? (
               <div>{errors.PhoneNo}</div>
             ) : null}
-            <Field name="userIdentityField" placeholder='Enter email id / username / phone no' className='userIdentityField' />
-            {errors.userIdentityField && touched.userIdentityField ? <div>{errors.userIdentityField}</div> : null}
-            <Field type="password" name="password" onChange={handleChange} onBlur={handleBlur} value={values.password} placeholder='password' className='password' />
+            <Field 
+            name="userIdentityField" 
+            placeholder='Enter email id / username / phone no'
+             className='userIdentityField' />
+            {errors.userIdentityField && touched.userIdentityField ?
+             <div>{errors.userIdentityField}</div> : null}
+            <Field
+             type="password"
+              name="password"
+               onChange={handleChange}
+               onBlur={handleBlur}
+                value={values.password}
+                 placeholder='password'
+                  className='password' />
             {errors.password && touched.password ? (
               <div>{errors.password}</div>
             ) : null}
