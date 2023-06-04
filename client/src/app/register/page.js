@@ -1,192 +1,171 @@
 'use client';
-import { useState } from 'react';
-import React from 'react';
-import { Formik, Form, Field } from 'formik';
-import * as Yup from 'yup';
-import Link from 'next/link'
+import {useState} from 'react';
+import { Formik } from "formik";
+import * as Yup from "yup";
+import Link from 'next/link';
 import Snackbar from '@mui/material/Snackbar';
+import checkValidity from '../utils/checkFieldTypeValidity'
 import '../css/register.css'
 
-function checkValidity(values) {
-  if (Number(values)?.toString() == NaN?.toString() && values?.includes('@')) {
-    if (values?.includes('.')) {
-      return ['email', true]
-    } else {
-      return ['email', false]
-    }
-  } else if (Number(values).toString() != NaN.toString()) {
-    if (values?.length == 10) {
-      return ['phoneNumber', true]
-    } else {
-      return ['phoneNumber', false]
-    }
-  } else if (Number(values).toString() != NaN.toString()) {
-    if (values?.trim().length > 0) {
-      return ['password', true]
-    } else {
-      return ['password', false]
-    }
-  }
-  else {
-    if (values?.length < 3 || !values) {
-      return ['username', false]
-    } else {
-      return ['username', true]
-    }
-  }
-}
-// creating schema
+
+
+
+// Creating schema
 const schema = Yup.object().shape({
   firstName: Yup.string()
     .min(2, 'Too Short!')
-    .max(100, 'Too Long!')
+    .max(50, 'Too Long!')
     .required('Required'),
   lastName: Yup.string()
     .min(2, 'Too Short!')
-    .max(100, 'Too Long!')
+    .max(50, 'Too Long!')
     .required('Required'),
-  PhoneNo: Yup.string()
-    .min(10, 'Invalid number!')
-    .max(15, 'Invalid number!')
-    .required('Required'),
+    userIdentityField: Yup.string()
+    .test(`validate userIdentityField`, (item)=>'invalid '+checkValidity(item?.value)[0], (value)=>  value?.length>0 && checkValidity(value)[1]),
   password: Yup.string()
-    .min(8, ' Password must be at least 8 characters')
-    .required('Required')
-    .test('password dont allow multiple spaces', () => 'password should not have multiple spaces', (value) => !value.includes('  ')),
-  email: Yup.string().email('Invalid email').required('Required'),
-  userIdentityField: Yup.string()
-    .test(`validate userIdentityField`, (item) => 'invalid ' + checkValidity(item?.value)[0], (value) => value?.length > 0 && checkValidity(value)[1]),
-
+    .required("Password is a required field")
+    .min(8, "Password must be at least 8 characters")
+    .test('password dont allow multiple spaces', ()=> 'password should not have multiple spaces', (value)=> !value.includes('  '))
+    ,
 });
 
-const Register = () => {
-  const [open, setOpen] = useState(false)
 
+
+
+function Register() {
+  // const { } = useSelector(state=>state.user)
+  const [open, setOpen] = useState(false)
+  const [submitMessage, setSubmitMessage] = useState('')
   const handleClose = (_, reason) => {
     if (reason === 'clickaway') {
       return;
     }
+
     setOpen(false);
   };
 
-  const handleRegister = async (values, resetForm) => {
-    try {
-      const userField = checkValidity(values.userIdentityField)
-      values[userField[0]] = values.userIdentyField
 
-      const requestOptions = {
+  const handleRegister = async(values,resetForm) => {
+    try{
+      const userField = checkValidity(values.userIdentityField)
+      values[userField[0]] = values.userIdentityField
+      
+      const requestOptions ={
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(values)
       }
-      const res = await fetch('http://localhost:8080/register', requestOptions)
+     const res = await fetch('http://localhost:8080/register', requestOptions)
      const data = await res.json()
      if(res.status == 200 && data){
       setOpen(true)
-       alert("user registration success")
-      }
-    } catch(err){
+      setSubmitMessage('Registration success')
+      resetForm()
+     }
+    }catch(err){
       setOpen(true)
-        alert("registration failed")
+      setSubmitMessage('Registration failed')
     }
+  
   }
-
   return (
-    <div className='form-box'>
-      <h1>Sign up</h1>
-      <Formik
-         validationSchema={schema}
-         initialValues={{
-          firstName: '',
-          lastName: '',
-          PhoneNo: '',
-          userIdentityField: '',
-          password: '',
-        }}
+    <>
 
+      <Formik
+        validationSchema={schema}
+        initialValues={{
+          firstName: '',
+          lastName: '', userIdentityField: "", password: ""
+        }}
         onSubmit={(values, { resetForm }) => {
           // Alert the input values of the form that we filled
           handleRegister(values,resetForm)
         }}
       >
         {({
-           values,
-           errors,
-           touched,
-           handleChange,
-           handleBlur,
-           handleSubmit,
+          values,
+          errors,
+          touched,
+          handleChange,
+          handleBlur,
+          handleSubmit,
         }) => (
-          <Form noValidate onSubmit={handleSubmit}>
-            <Field
-              name="firstName"
-              onChange={handleChange}
-              value={values.firstName}
-              id="firstName"
-              placeholder="First Name"
-              className='firstName'
-            />
-            {errors.firstName && touched.firstName ? (
-              <div>{errors.firstName}</div>
-            ) : null}
-            <Field
-              name="lastName"
-              value={values.lastName}
-              onChange={handleChange}
-              placeholder="Last Name"
-              className='lastName'
-            />
-            {errors.lastName && touched.lastName ? (
-              <div>{errors.lastName}</div>
-            ) : null}
-            <Field
-              name="PhoneNo"
-              onChange={handleChange}
-              placeholder='Phone No.'
-              className='contact'
-               />
-            {errors.PhoneNo && touched.PhoneNo ? (
-              <div>{errors.PhoneNo}</div>
-            ) : null}
-            <Field
-              name="userIdentityField"
-              placeholder='Enter email id / username / phone no'
-              className='userIdentityField'
-               />
-            {errors.userIdentityField && touched.userIdentityField ?
-              <div>{errors.userIdentityField}</div> : null}
-            <Field
-              type="password"
-              name="password"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.password}
-              placeholder='password'
-              className='password' 
-              />
-            {errors.password && touched.password ? (
-              <div>{errors.password}</div>
-            ) : null}
-            <div className='singup'>
-              <button type="submit">Register</button>
+          <div className="register">
+            <div className="form">
+              {/* Passing handleSubmit parameter tohtml form onSubmit property */}
+              <form noValidate onSubmit={handleSubmit}>
+                <h3>Register</h3>
+                <input 
+                name="firstName"
+                onChange={handleChange}
+                value={values.firstName}
+                id="firstName"
+                placeholder="Enter First Name"
+                  className="form-control"/>
+                <p className="error">
+                  {errors.firstName && touched.firstName && errors.firstName}
+                </p>
+               
+                <input name="lastName" 
+                  value={values.lastName}
+                  onChange={handleChange}
+                  placeholder="Enter Last  Name"
+                  className="form-control"
+                  />
+                <p className="error">
+                  {errors.lastName && touched.lastName && errors.lastName}
+                </p>
+                <input
+                  name="userIdentityField"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.userIdentityField}
+                  placeholder="Enter email id / username / phone no"
+                  className="form-control inp_text"
+                  id="userIdentityField"
+                />
+
+                <p className="error">
+                  {errors.userIdentityField && touched.userIdentityField && errors.userIdentityField}
+                </p>
+
+                <input
+                  type="password"
+                  name="password"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.password}
+                  placeholder="Enter password"
+                  className="form-control"
+                />
+
+                <p className="error">
+                  {errors.password && touched.password && errors.password}
+                </p>
+
+                <button type="submit">register</button>
+                <p className="Link">
+                  Already have an account ? <Link href="/login">Login</Link> instead
+                </p>
+              </form>
             </div>
-            <p className='register-link'>
-              Already have an account yet? <Link href="/login"> Sing in</Link> Instead
-            </p>
-          </Form>
+          </div>
         )}
       </Formik>
       <Snackbar
         open={open}
-        message="Popup"
+        message={submitMessage}
         onClose={handleClose}
-        autoHideDuration={3000}
+        
+        autoHideDuration={5000}
+      
+        // action={action}
       />
-
-
-
-    </div>
-  )
+    </>
+  );
 }
 
-export default Register
+export default Register;
+
+
+

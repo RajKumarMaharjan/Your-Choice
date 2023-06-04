@@ -1,4 +1,4 @@
-.form-box{
+.register{
     border: 2px solid black;
     width: 400px;
     height: 530px;
@@ -8,42 +8,17 @@
     border-radius: 10px;
     color: rgb(17, 23, 27);
 }
-
-.firstName{
+.form-control{
     width: 270px;
     height: 15px;
     margin: 10px;
     border-radius: 5px;
     padding: 10px;
 }
-.lastName{
-    width: 270px;
-    height: 15px;
-    margin: 10px;
-    border-radius: 5px;
-    padding: 10px;
-}
-.contact{
-    width: 270px;
-    height: 15px;
-    margin: 10px;
-    border-radius: 5px;
-    padding: 10px;
-}
-.userIdentityField{
-    width: 270px;
-    height: 15px;
-    margin: 10px;
-    border-radius: 5px;
-    padding: 10px;
-}
-
-.password{
-    width: 270px;
-    height: 15px;
-    margin: 10px;
-    border-radius: 5px;
-    padding: 10px;
+h3{
+    font-size: 24px;
+    color: dodgerblue;
+    text-decoration: underline;
 }
 button{
     padding: 7px;
@@ -51,4 +26,7 @@ button{
     border-radius: 5px;
     font-weight: bold;
     margin: 20px;
+}
+.Link{
+    font-size: 16px;
 }
