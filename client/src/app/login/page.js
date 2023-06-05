@@ -6,6 +6,8 @@ import * as Yup from "yup";
 import Link from 'next/link';
 import checkValidity from '../utils/checkFieldTypeValidity'
 import { setLogin } from '../redux/reducerSlice/userSlice'
+import '../css/form.css'
+import '../css/login.css'
 
 // Creating schema
 const schema = Yup.object().shape({
@@ -24,19 +26,21 @@ function Login() {
     try {
       const userField = checkValidity(values.userIdentityField)
       values[userField[0]] = values.userIdentityField
-
       const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(values)
       }
+ 
       const res = await fetch('http://localhost:8080/login', requestOptions)
       const data = await res.json()
+   
       if (res.status == 200 && data.isLoggedIn) {
         dispatch(setLogin(data))
         resetForm()
         router.push('/');
       }
+  
     } catch (err) {
       alert('login failed')
     }

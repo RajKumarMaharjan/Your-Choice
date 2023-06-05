@@ -25,7 +25,7 @@ const addNewUser = async(req, res) => {
 
    }
 
-const verifyUser = async(req, res) => {
+   const verifyUser = async(req, res) => {
     //find if the user exists
    const data = await User.findOne({$or:[{email:  req.body.email}, {userName: req.body.userName }, {phoneNumber:req.body.phoneNumber}]})
    if(data){
@@ -34,6 +34,7 @@ const verifyUser = async(req, res) => {
         //generate a jwt token for him
         const {password, ...allOtherItem} = req.body
         const token = await jwt.sign(allOtherItem, process.env.SECRET_KEY, { expiresIn: '12h'  });
+        console.log(data)
         if(isMatched && token){
             res.json({
                 msg: "login success",
