@@ -4,9 +4,14 @@ import Image from 'next/image'
 import Logo from '../images/your-choice.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons'
+import { useSelector } from 'react-redux';
+import BasicMenu from '../menu/page';
+
 import '../../css/nav.css'
+
 const Navbar=()=>{
   const router = useRouter();
+  const {role}= useSelector(state=>state.user)
   const handleRouting = (action) => {
     router.push(action)
   }
@@ -18,10 +23,14 @@ const Navbar=()=>{
        <div className='chart'>
        <FontAwesomeIcon icon={faCartShopping} />
        </div>
-       <div className='singingBtn'>
-        <button onClick={() => handleRouting('/login')}>Login</button>
-        <button onClick={() => handleRouting('/register')}>Register</button>
-        </div>
+       {! role ?(
+         <div className='singingBtn'>
+         <button onClick={() => handleRouting('/login')}>Login</button>
+         <button onClick={() => handleRouting('/register')}>Register</button>
+         </div>
+       ):(
+       <BasicMenu/>
+       )}
       </div>
         </>
     )
