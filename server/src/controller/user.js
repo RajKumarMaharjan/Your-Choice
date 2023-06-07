@@ -34,7 +34,7 @@ const addNewUser = async(req, res) => {
         //generate a jwt token for him
         const {password, ...allOtherItem} = req.body
         const token = await jwt.sign(allOtherItem, process.env.SECRET_KEY, { expiresIn: '12h'  });
-        console.log(data)
+     
         if(isMatched && token){
             res.json({
                 msg: "login success",

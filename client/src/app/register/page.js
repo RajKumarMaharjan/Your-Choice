@@ -115,6 +115,15 @@ function Register() {
                 <p className="error">
                   {errors.lastName && touched.lastName && errors.lastName}
                 </p>
+                <input name="phoneNumber"
+                  value={values.lastName}
+                  onChange={handleChange}
+                  placeholder="Phone Number"
+                  className="form-control"
+                />
+                <p className="error">
+                  {errors.phoneNumber && touched.phoneNumber && errors.phoneNumber}
+                </p>
                 <input
                   name="userIdentityField"
                   onChange={handleChange}

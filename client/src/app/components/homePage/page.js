@@ -1,13 +1,12 @@
 'use client';
 import Navbar from '../navbar/page';
-import '../../app/css/page.css'
+
 const Home = () => {
   return (
    
     <div className='body'>
          <Navbar/>
       <div className='menuBar'>
-    
        <ul>
         <li>
           Home

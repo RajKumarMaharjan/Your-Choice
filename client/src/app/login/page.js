@@ -18,7 +18,6 @@ const schema = Yup.object().shape({
     .min(8, "Password must be at least 8 characters"),
 });
 
-//validation lib 
 function Login() {
   const dispatch = useDispatch()
   const router = useRouter();

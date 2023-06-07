@@ -4,7 +4,7 @@ import Image from 'next/image'
 import Logo from '../images/your-choice.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons'
-
+import '../../css/nav.css'
 const Navbar=()=>{
   const router = useRouter();
   const handleRouting = (action) => {
