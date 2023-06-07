@@ -61,6 +61,7 @@ function Register() {
         setSubmitMessage('Registration success')
         resetForm()
       }
+      
     } catch (err) {
       setOpen(true)
       setSubmitMessage('Registration failed')

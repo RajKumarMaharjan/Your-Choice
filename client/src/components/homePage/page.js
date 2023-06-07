@@ -1,16 +1,11 @@
 'use client';
-import { useRouter } from 'next/navigation';
+import Navbar from '../navbar/page';
 import '../../app/css/page.css'
 const Home = () => {
-  const router = useRouter();
-  const handleRouting = (action) => {
-    router.push(action)
-  }
-
   return (
    
     <div className='body'>
-         
+         <Navbar/>
       <div className='menuBar'>
     
        <ul>
@@ -24,10 +19,6 @@ const Home = () => {
           About us
         </li>
        </ul>
-       <div className='singingBtn'>
-        <button onClick={() => handleRouting('/login')}>Login</button>
-        <button onClick={() => handleRouting('/register')}>Register</button>
-        </div>
         </div>
       <h2>
         Product catagories
