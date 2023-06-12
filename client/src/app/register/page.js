@@ -20,6 +20,10 @@ const schema = Yup.object().shape({
     .min(2, 'Too Short!')
     .max(50, 'Too Long!')
     .required('Required'),
+  phoneNumber: Yup.string()
+    .min(10, 'Invalid number')
+    .max(14, 'Invalid number')
+    .required('Required'),
   userIdentityField: Yup.string()
     .test(`validate userIdentityField`, (item) => 'invalid ' + checkValidity(item?.value)[0], (value) => value?.length > 0 && checkValidity(value)[1]),
   password: Yup.string()
@@ -61,6 +65,7 @@ function Register() {
         setSubmitMessage('Registration success')
         resetForm()
       }
+     
       
     } catch (err) {
       setOpen(true)
@@ -68,6 +73,7 @@ function Register() {
     }
 
   }
+
   return (
     <>
 
@@ -116,7 +122,7 @@ function Register() {
                   {errors.lastName && touched.lastName && errors.lastName}
                 </p>
                 <input name="phoneNumber"
-                  value={values.lastName}
+                  value={values.phoneNumber}
                   onChange={handleChange}
                   placeholder="Phone Number"
                   className="form-control"
@@ -165,10 +171,8 @@ function Register() {
         open={open}
         message={submitMessage}
         onClose={handleClose}
-
         autoHideDuration={5000}
-
-      // action={action}
+   
       />
     </>
   );

@@ -7,7 +7,7 @@ const router=express.Router()
 router.post('/register', addNewUser)
 router.post('/login', verifyUser)
 router.get('/user', getAllUsers)
- 
+
 
 
    module.exports=router;

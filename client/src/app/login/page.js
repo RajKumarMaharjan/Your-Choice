@@ -14,7 +14,7 @@ const schema = Yup.object().shape({
   userIdentityField: Yup.string()
     .test(`validate userIdentityField`, (item) => 'invalid ' + checkValidity(item?.value)[0], (value) => value?.length > 0 && checkValidity(value)[1]),
   password: Yup.string()
-    .required("Password is a required field")
+    .required("Password is a required")
     .min(8, "Password must be at least 8 characters"),
 });
 
@@ -71,7 +71,6 @@ function Login() {
                 <h3>Login</h3>
 
                 <input
-
                   name="userIdentityField"
                   onChange={handleChange}
                   onBlur={handleBlur}
