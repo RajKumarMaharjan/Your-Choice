@@ -1,8 +1,21 @@
-
+.header{
+    background-color: aqua;
+    height: 70px;
+    display: flex;
+  }
+  .logo{
+    margin-top: -50px;
+  }
 .search{
    height: 30px;
    width: 500px;
    border: 1px solid black;
    border-radius: 8px;
     margin: auto;
+}
+.chart{
+    margin-top: 15px;
+    font-size: 32px;
+    color: #113729
+    
 }

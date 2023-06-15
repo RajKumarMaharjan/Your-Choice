@@ -18,7 +18,7 @@ const Navbar=()=>{
     return(
         <>
          <div className='header'>
-       <Image src={Logo} alt="logo" width={100}/>
+       <Image src={Logo} alt="logo" width={190} className='logo'/>
        <input className='search' />
        <div className='chart'>
        <FontAwesomeIcon icon={faCartShopping} />

@@ -3,7 +3,9 @@ import Link from 'next/link';
 
 function AdminDashboard() {
   return (
-    <Link href="admin/add-items">add item</Link>
-  )
+    <div>
+        <Link href="/admin/add-item">Add Items</Link>
+    </div>
+)
 }
 export default AdminDashboard;

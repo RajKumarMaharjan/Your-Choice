@@ -1,10 +1,14 @@
-const Items = require('../model/item')
+const Item = require('../model/item')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken');
 const addNewItems = async(req, res) => {
         try{
-            const data = new Items(req.body)
-            console.log(data)
+           const data = await Item.create(req.body)
+           if(data){
+            res.json({
+                msg: "item saved sucessfully"
+            })
+           }
            
         }catch(err){
             console.log(err)
@@ -13,22 +17,21 @@ const addNewItems = async(req, res) => {
 
    }
 
- 
-
-const getAllUsers = async(req, res) => {
-    const data = await Items.find()
+   const getAllItems = async(req, res) => {
+    const data = await Item.find()
     if(data){
        res.json({
-        ItemsList: data
+        ClipboardItemList: data
        })
     }
  
  }
  
- 
+
+
 
 
 module.exports = {
     addNewItems,
-    getAllUsers
+    getAllItems
 }
