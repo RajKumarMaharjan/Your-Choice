@@ -14,12 +14,9 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage })
 
-router.post('/item', addNewItems)
+router.post('/item', upload.single('itemImage'), addNewItems)
 router.get('/item', getAllItems)
 
-router.post('/profile', upload.single('avatar'), function (req, res, next) {
-
-})
 
 
 

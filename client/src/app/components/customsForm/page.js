@@ -6,7 +6,13 @@ import axios from 'axios'
 function customsForm(props) {
   const [file, setFile] = useState(null)
   const submitFromData = async (values) => {
-    await axios.post("http://localhost:8080" + props.apiEndpoint , values )
+    const form = new FormData();
+    Object.entries(values).forEach(item=>{
+      form.append(item[0], item[1])
+    })
+    form.append('itemImage', file)
+
+    await axios.post("http://localhost:8080" + props.apiEndpoint , form )
   }
 
   const handleFileSave = (e)=>{

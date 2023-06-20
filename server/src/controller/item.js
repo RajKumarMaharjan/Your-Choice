@@ -3,6 +3,7 @@ const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken');
 const addNewItems = async(req, res) => {
         try{
+            req.body['Item Image'] = req.file.filename
            const data = await Item.create(req.body)
            if(data){
             res.json({
