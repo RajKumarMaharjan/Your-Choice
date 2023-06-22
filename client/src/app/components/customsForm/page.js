@@ -2,20 +2,48 @@
 import { useState } from 'react';
 import { Formik } from "formik";
 import axios from 'axios'
+import Snackbar from '@mui/material/Snackbar';
 
 function customsForm(props) {
+  const [open, setOpen] = useState(false)
+  const [submitMessage, setSubmitMessage] = useState('')
+  const handleClose = (_, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpen(false);
+  };
+
   const [file, setFile] = useState(null)
   const submitFromData = async (values) => {
-    const form = new FormData();
-    Object.entries(values).forEach(item=>{
-      form.append(item[0], item[1])
-    })
-    form.append('itemImage', file)
+ try{
+  const form = new FormData();
+  Object.entries(values).forEach(item => {
+    form.append(item[0], item[1])
+  })
+  form.append('itemImage', file)
 
-    await axios.post("http://localhost:8080" + props.apiEndpoint , form )
-  }
+  axios.post("http://localhost:8080" + props.apiEndpoint, form)
+  debugger;
+  const data = await res.json()
+  debugger;
+   if(res.status == 200 && data){
+    setOpen(true)
+    setSubmitMessage('upload success')
+    resetForm()
+   }
 
-  const handleFileSave = (e)=>{
+ }
+ catch(err){
+  setOpen(true)
+  setSubmitMessage('upload failed')
+}
+    }
+
+  
+
+  const handleFileSave = (e) => {
     setFile(e.target.files[0])
   }
 
@@ -26,7 +54,7 @@ function customsForm(props) {
         initialValues={{}}
         onSubmit={(values, { resetForm }) => {
           submitFromData(values)
-      
+
         }}
       >
         {({
@@ -45,7 +73,7 @@ function customsForm(props) {
                     <>
                       <input
                         name={item.label}
-                        onChange={(e)=>item.type == 'file' ? handleFileSave(e) : handleChange(e)}
+                        onChange={(e) => item.type == 'file' ? handleFileSave(e) : handleChange(e)}
                         value={values[item.label]}
                         id={item}
                         type={item.type}
@@ -68,7 +96,12 @@ function customsForm(props) {
           </div>
         )}
       </Formik>
-
+      <Snackbar
+        open={open}
+        message={submitMessage}
+        onClose={handleClose}
+        autoHideDuration={5000}
+      />
     </>
   );
 }
