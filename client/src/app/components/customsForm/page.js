@@ -25,9 +25,7 @@ function customsForm(props) {
   form.append('itemImage', file)
 
   axios.post("http://localhost:8080" + props.apiEndpoint, form)
-  debugger;
   const data = await res.json()
-  debugger;
    if(res.status == 200 && data){
     setOpen(true)
     setSubmitMessage('upload success')
@@ -35,9 +33,9 @@ function customsForm(props) {
    }
 
  }
- catch(err){
+ catch(error){
   setOpen(true)
-  setSubmitMessage('upload failed')
+  setSubmitMessage('Error: ' + error.message)
 }
     }
 

@@ -6,7 +6,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons'
 import { useSelector } from 'react-redux';
 import BasicMenu from '../menu/page';
-
 import '../../css/nav.css'
 
 const Navbar=()=>{

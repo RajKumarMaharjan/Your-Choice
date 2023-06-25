@@ -7,7 +7,7 @@ const addNewItems = async(req, res) => {
            const data = await Item.create(req.body)
            if(data){
             res.json({
-                msg: "item saved sucessfully"
+                msg: " saved sucessfully"
             })
            }
            
