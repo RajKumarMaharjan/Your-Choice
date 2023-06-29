@@ -16,7 +16,7 @@ function customsForm(props) {
   };
 
   const [file, setFile] = useState(null)
-  const submitFromData = async (values) => {
+  const submitFromData = async (values, { resetForm }) => {
  try{
   const form = new FormData();
   Object.entries(values).forEach(item => {
@@ -24,9 +24,8 @@ function customsForm(props) {
   })
   form.append('itemImage', file)
 
-  axios.post("http://localhost:8080" + props.apiEndpoint, form)
-  const data = await res.json()
-   if(res.status == 200 && data){
+  const res = await axios.post("http://localhost:8080" + props.apiEndpoint, form)
+   if(res.status === 200){
     setOpen(true)
     setSubmitMessage('upload success')
     resetForm()
@@ -35,7 +34,7 @@ function customsForm(props) {
  }
  catch(error){
   setOpen(true)
-  setSubmitMessage('Error: ' + error.message)
+  setSubmitMessage(error.message)
 }
     }
 
@@ -51,7 +50,7 @@ function customsForm(props) {
 
         initialValues={{}}
         onSubmit={(values, { resetForm }) => {
-          submitFromData(values)
+          submitFromData(values, { resetForm })
 
         }}
       >

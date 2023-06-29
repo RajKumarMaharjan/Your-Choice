@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons'
 import { useSelector } from 'react-redux';
 import BasicMenu from '../menu/page';
+import SearchIcon from '@mui/icons-material/Search';
 import '../../css/nav.css'
 
 const Navbar=()=>{
@@ -17,15 +18,16 @@ const Navbar=()=>{
     return(
         <>
          <div className='header'>
-       <Image src={Logo} alt="logo" width={190} className='logo'/>
-       <input className='search' />
+         <Image src={Logo} alt="logo" width={150} className='logo'/>
+         <SearchIcon className='search-icon'/>
+       <input className='search' placeholder='search...'/>
        <div className='chart'>
        <FontAwesomeIcon icon={faCartShopping} />
        </div>
        {! role ?(
          <div className='singingBtn'>
-         <button onClick={() => handleRouting('/login')}>Login</button>
-         <button onClick={() => handleRouting('/register')}>Register</button>
+         <button className='login' onClick={() => handleRouting('/login')}>Login</button>
+         <button className='singup' onClick={() => handleRouting('/register')}>Register</button>
          </div>
        ):(
        <BasicMenu/>

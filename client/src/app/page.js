@@ -4,7 +4,6 @@ import { useSelector } from "react-redux";
 import UserDashboard from './user/page';
 import AdminDashboard from './admin/page';
 import HomePage from './components/homePage/page'
-import NavBar from "./components/navbar/page"
 const Home = () => {
   const { token, role, isLoggedIn } = useSelector((state) => state.user);
 
@@ -22,7 +21,6 @@ const Home = () => {
 
   return (
     <>
-      <NavBar />
       <PrimaryPages />
     </>
 

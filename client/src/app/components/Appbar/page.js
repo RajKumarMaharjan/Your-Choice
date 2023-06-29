@@ -102,11 +102,13 @@ export default function PrimarySearchAppBar() {
             }}
             open={isMenuOpen}
             onClose={handleMenuClose}
-        >
-            <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-            <MenuItem onClick={handleMenuClose}>My account</MenuItem>
-            <MenuItem onClick={() => dispatch(setLogout())}>Logout</MenuItem>
-        </Menu>
+            >
+   
+        <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
+        <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+        <MenuItem onClick={() => dispatch(setLogout())}>Logout</MenuItem>
+    </Menu>
+           
     );
 
     const mobileMenuId = 'primary-search-account-menu-mobile';
