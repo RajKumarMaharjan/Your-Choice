@@ -47,10 +47,9 @@ function customsForm(props) {
   return (
     <>
       <Formik
-
         initialValues={{}}
         onSubmit={(values, { resetForm }) => {
-          submitFromData(values, { resetForm })
+        submitFromData(values, { resetForm })
 
         }}
       >
@@ -97,10 +96,10 @@ function customsForm(props) {
         open={open}
         message={submitMessage}
         onClose={handleClose}
-        autoHideDuration={5000}
+        autoHideDuration={2000}
       />
     </>
-  );
+  )
 }
 
 export default customsForm;

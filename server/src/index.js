@@ -6,14 +6,12 @@ require('dotenv').config(`${process.env.SECRET_KEY}`)
 const userRoutes = require('./routes/user')
 const itemRoutes = require ('./routes/item')
 const dbconnect = require('./db/dbconnect')
-
-dbconnect()
 app.use(express.json());
 app.use(cors());
-
-
 app.use("/", userRoutes);
 app.use("/", itemRoutes);
+dbconnect()
+
 
 
 app.listen(process.env.PORT, () => {
