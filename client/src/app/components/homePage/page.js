@@ -1,9 +1,10 @@
 'use client';
 import NavBar from "../../components/navbar/page"
 import '../../css/homepage.css'
+
+
 const Home = () => {
   return (
-
     <div className='body'>
       <NavBar />
       <div className='menuBar'>
@@ -25,12 +26,7 @@ const Home = () => {
           </li>
         </ul>
       </div>
-      <h2>
-        Product catagories
-      </h2>
-      <div className='product'>
-        Product image A
-      </div>
+    
     </div>
   )
 }

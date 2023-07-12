@@ -18,7 +18,7 @@ export default function RootLayout({ children }) {
       <head>
         <title>Your-Choice</title>
       </head>
-        <body className={inter.className}>
+        <body>
           <Provider store={store}>
           <PersistGate loading={null} persistor={persistor}>
           {children}

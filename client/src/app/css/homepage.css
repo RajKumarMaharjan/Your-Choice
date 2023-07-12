@@ -1,8 +1,8 @@
 .menulist{
-   list-style: none;
-   display: flex;
-   gap: 52px;
-   font-size: 18px;
-   font-weight: 500;
-   justify-content: center;
-}
+    list-style: none;
+    display: flex;
+    gap: 52px;
+    font-size: 18px;
+    font-weight: 500;
+    justify-content: center;
+ }

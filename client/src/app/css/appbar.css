@@ -1,21 +1,21 @@
 .logo{
-   height:10%;
-   margin-bottom: -60px;
-   padding: 10px;
-}
-
-.css-hyum1k-MuiToolbar-root{
-    color: black;
-   
-}
-.css-to4x1n-MuiBadge-badge{
-    background-color:#F9A82F !important ;
-    color: #000 !important;
-}
-.css-hip9hq-MuiPaper-root-MuiAppBar-root{
-    background-color: rgb(21, 188, 188) !important;
-}
-.css-96uuyl{
-    margin-left: 300px !important;
-    width: 600px !important;
-}
+    height:10%;
+    margin-bottom: -50px;
+    padding: 10px;
+ }
+ 
+ .css-hyum1k-MuiToolbar-root{
+     color: black;
+    
+ }
+ .css-to4x1n-MuiBadge-badge{
+     background-color:#F9A82F !important ;
+     color: #000 !important;
+ }
+ .css-hip9hq-MuiPaper-root-MuiAppBar-root{
+     background-color: rgb(65, 180, 237) !important;
+ }
+ .css-96uuyl{
+     margin-left: 200px !important;
+     width: 600px !important;
+ }
