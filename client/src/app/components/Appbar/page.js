@@ -9,7 +9,7 @@ import InputBase from '@mui/material/InputBase';
 import Badge from '@mui/material/Badge';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
+import MenuIcon from '../List/page';
 import SearchIcon from '@mui/icons-material/Search';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import MailIcon from '@mui/icons-material/Mail';
@@ -162,7 +162,6 @@ export default function PrimarySearchAppBar() {
             </MenuItem>
         </Menu>
     );
-
     return (
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static">
@@ -174,7 +173,7 @@ export default function PrimarySearchAppBar() {
                         aria-label="open drawer"
                         sx={{ mr: 2 }}
                     >
-                        <MenuIcon />
+                        <MenuIcon/>
                     </IconButton>
                     <Typography
                         variant="h6"

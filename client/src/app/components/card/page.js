@@ -2,7 +2,6 @@ import * as React from 'react';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
@@ -14,11 +13,11 @@ export default function ImgMediaCard(props) {
  
   return (
     <div>
-      <Card sx={{ maxWidth: 345 }}>
+      <Card sx={{ maxWidth: 300, maxHeight: 400}}>
         <img
           src={imageUrl}
-          width={500}
-          height={500}
+          width={280}
+          height={300}
           alt={props.item['Item Name']}
         />
         <CardContent>
