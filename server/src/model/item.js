@@ -5,6 +5,7 @@ const ItemSchema = new mongoose.Schema({
   "Item Brand": String,
   "Item Description": String,
   "Item Image": String,
+  "Item Price": Number,
 });
 
 

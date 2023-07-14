@@ -13,11 +13,11 @@ export default function ImgMediaCard(props) {
  
   return (
     <div>
-      <Card sx={{ maxWidth: 300, maxHeight: 400}}>
-        <img
+      <Card sx={{ maxWidth: 300, maxHeight: 500}}>
+      <img
           src={imageUrl}
-          width={280}
-          height={300}
+          width={250}
+          height={200}
           alt={props.item['Item Name']}
         />
         <CardContent>

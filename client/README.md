@@ -1,5 +1,9 @@
 Your Choice
 
+##Feature edit
+    *npm run dev
+    *nodemon
+
 ##Tech Stack
 *React JS
 *React Router
@@ -24,4 +28,6 @@ Your Choice
     #order notification
 *Users
     #Add chart
+*Dashboard
+    #page genation
 
