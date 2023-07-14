@@ -12,9 +12,9 @@ import Menu from '@mui/material/Menu';
 import MenuIcon from '../List/page';
 import SearchIcon from '@mui/icons-material/Search';
 import AccountCircle from '@mui/icons-material/AccountCircle';
-import MailIcon from '@mui/icons-material/Mail';
-import NotificationsIcon from '@mui/icons-material/Notifications';
+import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 import MoreIcon from '@mui/icons-material/MoreVert';
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import { useDispatch } from 'react-redux';
 import { setLogout } from '../../redux/reducerSlice/userSlice'
 import Image from 'next/image'
@@ -131,23 +131,12 @@ export default function PrimarySearchAppBar() {
             <MenuItem>
                 <IconButton size="large" aria-label="show 4 new mails" color="inherit">
                     <Badge badgeContent={4} color="error">
-                        <MailIcon />
+                        <NotificationsNoneIcon />
                     </Badge>
                 </IconButton>
                 <p>Messages</p>
             </MenuItem>
-            <MenuItem>
-                <IconButton
-                    size="large"
-                    aria-label="show 17 new notifications"
-                    color="inherit"
-                >
-                    <Badge badgeContent={17} color="error">
-                        <NotificationsIcon />
-                    </Badge>
-                </IconButton>
-                <p>Notifications</p>
-            </MenuItem>
+           
             <MenuItem onClick={handleProfileMenuOpen}>
                 <IconButton
                     size="large"
@@ -196,8 +185,8 @@ export default function PrimarySearchAppBar() {
                     <Box sx={{ flexGrow: 1 }} />
                     <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
                         <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-                            <Badge badgeContent={4} color="error">
-                                <MailIcon />
+                            <Badge badgeContent={2} color="error">
+                                <NotificationsNoneIcon />
                             </Badge>
                         </IconButton>
                         <IconButton
@@ -205,8 +194,8 @@ export default function PrimarySearchAppBar() {
                             aria-label="show 17 new notifications"
                             color="inherit"
                         >
-                            <Badge badgeContent={17} color="error">
-                                <NotificationsIcon />
+                            <Badge badgeContent={3} color="error">
+                               <AddShoppingCartIcon/>
                             </Badge>
                         </IconButton>
                         <IconButton
@@ -230,7 +219,7 @@ export default function PrimarySearchAppBar() {
                             onClick={handleMobileMenuOpen}
                             color="inherit"
                         >
-                            <MoreIcon />
+                            <NotificationsNoneIcon />
                         </IconButton>
                     </Box>
                 </Toolbar>
