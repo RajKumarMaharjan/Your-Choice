@@ -1,11 +1,14 @@
 .logo{
     height:10%;
-    margin-bottom: -50px;
     padding: 10px;
+    margin-top: 8px;
+    margin-left: -10px;
+    margin-right: 20px;
  }
  
  .css-hyum1k-MuiToolbar-root{
      color: black;
+     background-color: rgb(8, 192, 192);
     
  }
  .css-to4x1n-MuiBadge-badge{
@@ -14,6 +17,7 @@
  }
  .css-hip9hq-MuiPaper-root-MuiAppBar-root{
      background-color: rgb(65, 180, 237) !important;
+     height: 65px;
  }
  .css-96uuyl{
      justify-items: center;

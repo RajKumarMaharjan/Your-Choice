@@ -8,8 +8,12 @@
  .category{
    position: absolute;
    z-index: 50;
- 
+  color:rgb(202,199,185);
+  
  }
- .css-i4bv87-MuiSvgIcon-root {
-   margin-top: 10px;
+
+ .css-hyum1k-MuiToolbar-root{
+  background: transparent;
+  margin-top: 3px;
+  margin-right: 4px;
  }

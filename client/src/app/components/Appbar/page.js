@@ -13,7 +13,6 @@ import MenuIcon from '../List/page';
 import SearchIcon from '@mui/icons-material/Search';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
-import MoreIcon from '@mui/icons-material/MoreVert';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import { useDispatch } from 'react-redux';
 import { setLogout } from '../../redux/reducerSlice/userSlice'
@@ -152,7 +151,7 @@ export default function PrimarySearchAppBar() {
         </Menu>
     );
     return (
-        <Box sx={{ flexGrow: 1 }}>
+        <Box sx={{ flexGrow: 1 }} >
             <AppBar position="static">
                 <Toolbar>
                     <IconButton

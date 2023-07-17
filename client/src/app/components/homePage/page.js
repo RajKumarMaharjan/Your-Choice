@@ -7,20 +7,29 @@ import Image from 'next/image'
 import Category from '../List/page'
 import '../../css/homepage.css'
 import bannerImage from '../images/online-shopping.jpeg'
+import Pagination from '@mui/material/Pagination';
+import Stack from '@mui/material/Stack';
+import MapPage from '../Map/page'
 
 const Home = () => {
   const [itemList, setItemList] = useState([])
+  const [pageCount, setPageCount] = useState(0);
 
-  const fetchItem = async () => {
+  const fetchItem = async (page=1) => {
     try {
-      const res = await fetch('http://localhost:8080/item')
+      const res = await fetch('http://localhost:8080/item?page='+page)
       const data = await res.json();
       setItemList(data.ClipboardItemList);
+      setPageCount(data.pageCount);
     } 
     catch (error) {
       console.log(error);
     }
+  };
+  const handleChange = (event, value)=>{
+    fetchItem(value)
   }
+
   useEffect(() => {
     fetchItem();
   }, []);
@@ -50,6 +59,13 @@ const Home = () => {
         )}
       </Grid>
       </div>
+      <Stack spacing={2}>
+      <Pagination 
+      count={pageCount}
+      onChange = {handleChange}
+       />
+    </Stack>
+    <MapPage/>
     </div>
     
   )

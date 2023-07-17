@@ -1,50 +1,25 @@
-.header{
-    background-color: rgb(21, 188, 188);
-    height: 60px;
-    display: flex;
-    padding: 10px 50px;
-  }
-  .logo{
-    margin-top: -40px;
-    height: 120px;
-  
-  }
-.search{
-   height: 30px;
-   width: 500px;
-   border: 1px solid rgb(231, 225, 225);
-   border-radius: 8px;
-    margin: auto;
+.navbar{
+  background:rgb(29, 166, 178);
 }
-.chart{
-    margin-top: 15px;
-    font-size: 28px;
-    margin-right: 10px;
-    margin-top: -2px;
-    color: #113729
-    
+.css-hyum1k-MuiToolbar-root {
+  height: 40px;
 }
-.search-icon{
-  position: absolute;
-  margin-left: 950px;
-  margin-top: 10px;
-
-}
-.search{
-  padding: 3px 20px;
-  font-size: 16px;
-
+.singingBtn{
+  padding: 10px;
+  margin-top: 8px;
+  font-size: 12px;
 }
 .login{
-  padding: 5px;
-  border-radius: 5px;
-  border: none;
-  margin-right: 10px;
-  font-size: 16px;
+  padding: 2px 5px;
+  border: 1px solid rgb(60, 58, 58);
+  border-radius: 10px;
 }
 .singup{
-  padding: 5px;
-  border-radius: 5px;
-  font-size: 16px;
-  border: none;
+  padding: 2px 5px;
+  border: 1px solid rgb(60, 58, 58);
+  border-radius: 10px;
+  margin-left: 8px;
+}
+.css-i4bv87-MuiSvgIcon-root {
+  color: rgb(60, 58, 58) !important;
 }

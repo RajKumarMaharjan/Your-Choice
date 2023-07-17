@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import Appbar from '../components/Appbar/page';
 import Card from '../components/card/page';
 import Grid from '@mui/material/Grid';
-import { Link, MemoryRouter, Route, Routes, useLocation,useNavigate  } from 'react-router-dom';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 import '../css/user.css'
