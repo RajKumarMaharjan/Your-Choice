@@ -4,12 +4,12 @@ import { useEffect, useState } from 'react';
 import Grid from '@mui/material/Grid';
 import Card from '../../components/card/page';
 import Image from 'next/image'
-import Category from '../List/page'
+import Category from '../CategoryList/page'
 import '../../css/homepage.css'
 import bannerImage from '../images/online-shopping.jpeg'
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
-import MapPage from '../Map/page'
+import Map from '../Map/page'
 
 const Home = () => {
   const [itemList, setItemList] = useState([])
@@ -65,7 +65,7 @@ const Home = () => {
       onChange = {handleChange}
        />
     </Stack>
-    <MapPage/>
+    <Map/>
     </div>
     
   )

@@ -1,4 +1,6 @@
-import { GoogleMap, LoadScript } from '@react-google-maps/api';
+import React from 'react';
+import {useState} from 'react';
+import { GoogleMap, LoadScript, Marker, InfoWindow   } from '@react-google-maps/api';
 
 
 
@@ -13,6 +15,11 @@ const containerStyle = {
   };
   
   const Map=()=>{
+    const [showInfoWindow, setShowInfoWindow] = useState(false);
+    const storeName = 'Your Choice'
+    const toggleInfoWindow = () => {
+      setShowInfoWindow(!showInfoWindow)
+    }
     return (
         <LoadScript
         googleMapsApiKey="AIzaSyDLfjmFgDEt9_G2LXVyP61MZtVHE2M3H-0"
@@ -22,7 +29,18 @@ const containerStyle = {
           mapContainerStyle={containerStyle}
           center={center}
           zoom={14}
-        ></GoogleMap>
+        >
+          <Marker position={center} onClick={toggleInfoWindow}/>
+           {showInfoWindow && (
+          <InfoWindow position={center} onCloseClick={toggleInfoWindow}>
+            <div>
+              <h3>{storeName}</h3>
+              <p>Address: koteshwor kathmandu</p>
+              {/* Add other store information here */}
+            </div>
+          </InfoWindow>
+        )}
+        </GoogleMap>
       </LoadScript>
 
     )

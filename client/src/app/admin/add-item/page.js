@@ -1,6 +1,8 @@
 "use client" 
 import CustomForm from '../../components/customsForm/page';
 import Appbar from '../../components/Appbar/page'
+
+
 const AddItems = ()=> {
     const formItems = [
         {label:'Item Name', type:'text'}, 

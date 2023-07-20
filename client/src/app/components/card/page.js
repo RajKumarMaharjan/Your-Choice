@@ -1,15 +1,31 @@
 import * as React from 'react';
+import { useState } from 'react';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import Form from '../customsForm/page'
+
+
 
 export default function ImgMediaCard(props) {
+  const [formVisible, setFormVisible] = useState(false);
   const itemId = props.item['_id'];
   const imageUrl = itemId
     ? `http://localhost:8080/item-image/${itemId}`
     : '';
+
+    const formItems = [
+      {label:'Full Name', type:'text'}, 
+      {label:'Address', type:'text'}, 
+      {label:'Product code', type:'text'},
+      {label:'Product Description', type:'text'} 
+    ]
+
+    const handleFormToggle = () => {
+      setFormVisible((prevFormVisible) => !prevFormVisible);
+    };
  
   return (
     <div>
@@ -33,10 +49,11 @@ export default function ImgMediaCard(props) {
           </Typography>
         </CardContent>
         <CardActions>
-          <Button size="small">Buy</Button>
+          <Button size="small" onClick={handleFormToggle}>Buy</Button>
           <Button size="small">Chart</Button>
         </CardActions>
       </Card>
+      {formVisible && <Form formItems={formItems} apiEndpoint="/item" />}
     </div>
   );
 }

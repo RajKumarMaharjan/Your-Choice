@@ -9,7 +9,7 @@ import InputBase from '@mui/material/InputBase';
 import Badge from '@mui/material/Badge';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
-import MenuIcon from '../List/page';
+import MenuIcon from '../CategoryList/page';
 import SearchIcon from '@mui/icons-material/Search';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
@@ -161,7 +161,6 @@ export default function PrimarySearchAppBar() {
                         aria-label="open drawer"
                         sx={{ mr: 2 }}
                     >
-                        <MenuIcon/>
                     </IconButton>
                     <Typography
                         variant="h6"

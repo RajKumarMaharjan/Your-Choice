@@ -4,12 +4,14 @@ import { persistReducer, persistStore } from 'redux-persist';
 import { combineReducers } from "redux";
 import userSlice from '../reducerSlice/userSlice'
 import itemSlice from '../reducerSlice/itemSlice'
+import locationSlice from '../reducerSlice/locationSlice'
 import logger from 'redux-logger'
 
 
 const reducer = combineReducers({
   user: userSlice,
-  item: itemSlice
+  item: itemSlice,
+  location:locationSlice
 });
 
 const persistConfig = {

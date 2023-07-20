@@ -61,8 +61,7 @@ function customsForm(props) {
           handleBlur,
           handleSubmit,
         }) => (
-          <div className="register">
-            <div className="form">
+            <div className="form border rounded-lg border-gray-600 p-1">
               <form onSubmit={handleSubmit}>
                 {props.formItems.map((item) => {
                   return (
@@ -74,7 +73,7 @@ function customsForm(props) {
                         id={item}
                         type={item.type}
                         placeholder={item.label}
-                        className="form-control" />
+                        className="form-control m-2" />
                       <p className="error">
                         {errors[item.label] && touched[item.label] && errors[item.label]}
                       </p>
@@ -85,11 +84,12 @@ function customsForm(props) {
 
 
 
-                <button type="submit">Save</button>
+                <button type="submit" className='border border-gray-600 rounded-lg px-2 mx-auto'>
+                  Save
+                  </button>
 
               </form>
             </div>
-          </div>
         )}
       </Formik>
       <Snackbar

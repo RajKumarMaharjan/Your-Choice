@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
 import Appbar from '../components/Appbar/page';
+import MenuIcon from '../components/CategoryList/page'
 import Card from '../components/card/page';
 import Grid from '@mui/material/Grid';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
+import Map from '../components/Map/page'
 import '../css/user.css'
 
 const UserDashboard = () => {
@@ -33,6 +35,7 @@ const UserDashboard = () => {
   return (
     <div className=' bg-slate-50'>
       <Appbar />
+      <MenuIcon/>
       <div className='mt-20 mx-28 justify-items-center'>
       <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} className='gap-6'>
         {itemList && itemList.length > 0 ? (
@@ -55,6 +58,7 @@ const UserDashboard = () => {
       onChange = {handleChange}
        />
     </Stack>
+    <Map/>
     </div>
   );
 };
