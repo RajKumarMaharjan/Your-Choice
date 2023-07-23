@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useState } from 'react';
 import Appbar from '../components/Appbar/page'
-import ListMenu from '../components/AdminList/page'
+import MenuIcon from '../components/Drawer/page'
 import Grid from '@mui/material/Grid';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
@@ -35,9 +35,8 @@ function AdminDashboard() {
   return (
     <div>
           <Appbar/>
-          <ListMenu/>
-          <div className='mt-20 mx-28 justify-items-center'>
-      <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} className='gap-6'>
+          <div className='mt-20 mx-52 justify-items-center'>
+      <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} className='gap-12'>
         {itemList && itemList.length > 0 ? (
           itemList.map((item) => {
             console.log(item)

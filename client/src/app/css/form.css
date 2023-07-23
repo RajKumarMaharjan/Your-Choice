@@ -1,7 +1,7 @@
 .register{
     border: 2px solid black;
     width: 400px;
-    height: 530px;
+    height: auto;
     background-color: aqua;
     text-align: center;
     margin: 100px auto;

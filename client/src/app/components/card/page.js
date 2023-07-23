@@ -10,7 +10,8 @@ import Form from '../customsForm/page'
 
 
 export default function ImgMediaCard(props) {
-  const [formVisible, setFormVisible] = useState(false);
+  const [formVisible, setFormVisible] = useState(false)
+  const [currentItemId, setCurrentItemId] = useState(null)
   const itemId = props.item['_id'];
   const imageUrl = itemId
     ? `http://localhost:8080/item-image/${itemId}`
@@ -23,9 +24,15 @@ export default function ImgMediaCard(props) {
       {label:'Product Description', type:'text'} 
     ]
 
-    const handleFormToggle = () => {
-      setFormVisible((prevFormVisible) => !prevFormVisible);
-    };
+    const handleBuyButtonClick = () => {
+       if (currentItemId === itemId){
+        setFormVisible(false)
+        setCurrentItemId(null)
+       } else {
+        setFormVisible(true)
+        setCurrentItemId(itemId)
+       }
+    }
  
   return (
     <div>
@@ -49,11 +56,13 @@ export default function ImgMediaCard(props) {
           </Typography>
         </CardContent>
         <CardActions>
-          <Button size="small" onClick={handleFormToggle}>Buy</Button>
+          <Button size="small" onClick={() => handleBuyButtonClick(itemId)}>Buy</Button>
           <Button size="small">Chart</Button>
         </CardActions>
       </Card>
-      {formVisible && <Form formItems={formItems} apiEndpoint="/item" />}
+      {formVisible && currentItemId === itemId && (
+        <Form formItems={formItems} apiEndpoint="/item" />
+      )}
     </div>
   );
 }

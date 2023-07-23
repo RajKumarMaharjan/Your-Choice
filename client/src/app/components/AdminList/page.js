@@ -40,8 +40,8 @@ export default function PersistentDrawerLeft() {
   const data = [
     {  label: 'Home Appliance' },
     {  label: 'Electronic' },
-    {  label: 'Gadgets' },
-    {  label: 'Stationery' },
+    {  label: 'Sports' },
+    {  label: 'Health & Beauty' },
   ];
 
   const formItems = [
@@ -171,7 +171,7 @@ export default function PersistentDrawerLeft() {
              <IconButton onClick={handleFormClose}>
              {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
              </IconButton>
-          <CustomForm formItems={formItems} apiEndpoint="/item" />
+          <CustomForm formItems={formItems} apiEndpoint="/item"/>
           </div>
         )}
     </Box>

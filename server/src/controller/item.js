@@ -24,9 +24,9 @@ const addNewItems = async(req, res) => {
    // Function to get all items
    const getAllItems = async (req, res) => {
     const itemCount = await Item.find().count()
-    const pageCount = Math.ceil(itemCount/4)
-    const skipRange = (req.query.page -1) * 4
-    const data = await Item.find({}).skip(skipRange).limit(4);
+    const pageCount = Math.ceil(itemCount/3)
+    const skipRange = (req.query.page -1) * 3
+    const data = await Item.find({}).skip(skipRange).limit(3);
     try {
       if (data.length > 0) {
         res.json({
