@@ -1,5 +1,6 @@
 {
     "user": ["Electronic", "Home Appliance", "Sports"],
-    "admin": ["Add Item", "Order History"],
+    "admin": ["Order History"],
     "guest": ["Electronic", "Home Appliance", "Sports"]
 }
+

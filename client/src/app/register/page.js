@@ -5,7 +5,7 @@ import * as Yup from "yup";
 import Link from 'next/link';
 import Snackbar from '@mui/material/Snackbar';
 import checkValidity from '../utils/checkFieldTypeValidity'
-import '../css/form.css'
+import '../css/register.css'
 
 
 
@@ -100,7 +100,7 @@ function Register() {
           <div className="register">
             <div className="form">
               <form noValidate onSubmit={handleSubmit}>
-                <h3>Sing Up</h3>
+              <p className='head'>Register</p>
                 <input
                   name="firstName"
                   onChange={handleChange}

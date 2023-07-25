@@ -60,14 +60,14 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     },
 }));
 
-export default function PrimarySearchAppBar() {
+export default function PrimarySearchAppBar({wishlistCount }) {
     const dispatch = useDispatch()
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
     const isMenuOpen = Boolean(anchorEl);
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-
+    
     const handleProfileMenuOpen = (event) => {
         setAnchorEl(event.currentTarget);
     };
@@ -182,10 +182,10 @@ export default function PrimarySearchAppBar() {
                         </IconButton>
                         <IconButton
                             size="large"
-                            aria-label="show 17 new notifications"
+                            aria-label="show wishlist count"
                             color="inherit"
                         >
-                            <Badge badgeContent={3} color="error">
+                            <Badge badgeContent={wishlistCount} color="error">
                                <AddShoppingCartIcon/>
                             </Badge>
                         </IconButton>

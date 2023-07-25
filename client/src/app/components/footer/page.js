@@ -17,7 +17,6 @@ const Footerdashboard = () => {
                 </div>
                 <div>
                 <Image src={Logo} alt="logo" width={250} className='logo'/>
-                <p>www.yourchoice.com</p>
                 </div>
                
              </Grid>

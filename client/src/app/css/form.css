@@ -1,14 +1,4 @@
-.register{
-    border: 2px solid black;
-    width: 400px;
-    height: auto;
-    background-color: aqua;
-    text-align: center;
-    margin: 100px auto;
-    border-radius: 10px;
-    color: rgb(17, 23, 27);
-    align-items: center;
-}
+
 .form-control{
     width: 270px;
     height: 15px;

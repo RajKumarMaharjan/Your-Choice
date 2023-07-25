@@ -68,7 +68,7 @@ function Login() {
               {/* Passing handleSubmit parameter tohtml form onSubmit property */}
               <form noValidate onSubmit={handleSubmit}>
 
-                <h3>Login</h3>
+                <p className='head'>Login</p>
 
                 <input
                   name="userIdentityField"

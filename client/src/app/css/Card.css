@@ -1,0 +1,9 @@
+.buyForm{
+    border: 1px solid #967a7a;
+    border-radius: 15px;
+    text-align: center !important;
+    padding: 10px;
+    margin-top: -200px !important;
+    position: absolute;
+    right: 0;
+}

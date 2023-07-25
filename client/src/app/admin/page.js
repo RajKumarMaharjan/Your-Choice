@@ -1,12 +1,11 @@
 'use client';
 import { useEffect, useState } from 'react';
 import Appbar from '../components/Appbar/page'
-import MenuIcon from '../components/Drawer/page'
 import Grid from '@mui/material/Grid';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 import Card from '../components/card/page';
-
+import AdminList from '../components/AdminList/page'
 
 function AdminDashboard() {
   const [itemList, setItemList] = useState([]);
@@ -28,13 +27,15 @@ function AdminDashboard() {
     fetchItem(value)
   }
 
+
   useEffect(() => {
     fetchItem();
   }, [])
   
   return (
-    <div>
+    <div className='bg-gray-100'>
           <Appbar/>
+          <AdminList/>
           <div className='mt-20 mx-52 justify-items-center'>
       <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} className='gap-12'>
         {itemList && itemList.length > 0 ? (

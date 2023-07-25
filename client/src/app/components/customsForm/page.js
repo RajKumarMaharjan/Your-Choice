@@ -61,9 +61,9 @@ function customsForm(props) {
           handleBlur,
           handleSubmit,
         }) => (
-            <div className="form border rounded-lg border-gray-600 p-1">
+            <div className="form">
               <form onSubmit={handleSubmit}>
-                {props.formItems.map((item) => {
+                {props.formItems && props.formItems.map((item) => {
                   return (
                     <>
                       <input
@@ -73,7 +73,7 @@ function customsForm(props) {
                         id={item}
                         type={item.type}
                         placeholder={item.label}
-                        className="form-control m-2" />
+                        className="form-control m-2 p-1 border-gray-300 rounded-lg w-auto" />
                       <p className="error">
                         {errors[item.label] && touched[item.label] && errors[item.label]}
                       </p>

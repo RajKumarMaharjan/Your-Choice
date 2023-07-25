@@ -8,6 +8,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Toolbar from '@mui/material/Toolbar';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
+import AddchartIcon from '@mui/icons-material/Addchart';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
@@ -79,7 +80,7 @@ export default function PersistentDrawerLeft() {
             edge="start"
             sx={{ mr: 2, ...(open && { display: 'none' }) }}
           >
-            <MenuIcon />
+            <AddchartIcon  className='AddItem'/>
           </IconButton>
         </Toolbar>
      

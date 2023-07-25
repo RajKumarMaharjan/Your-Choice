@@ -6,12 +6,13 @@ import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Form from '../customsForm/page'
-
+import '../../css/Card.css'
 
 
 export default function ImgMediaCard(props) {
   const [formVisible, setFormVisible] = useState(false)
   const [currentItemId, setCurrentItemId] = useState(null)
+  const [wishlist, setWishlist] = useState([]); 
   const itemId = props.item['_id'];
   const imageUrl = itemId
     ? `http://localhost:8080/item-image/${itemId}`
@@ -22,18 +23,36 @@ export default function ImgMediaCard(props) {
       {label:'Address', type:'text'}, 
       {label:'Product code', type:'text'},
       {label:'Product Description', type:'text'} 
-    ]
+    ];
+
 
     const handleBuyButtonClick = () => {
        if (currentItemId === itemId){
-        setFormVisible(false)
-        setCurrentItemId(null)
+        setFormVisible((prevFormVisible) => !prevFormVisible);
        } else {
-        setFormVisible(true)
+        setFormVisible(true);
         setCurrentItemId(itemId)
+        
        }
-    }
+    };
  
+    const handleChartButton = (itemId) => {
+      if (wishlist.includes(itemId)){
+        setWishlist((prevWishlist) => prevWishlist.filter((item) => item !== itemId))
+      }else{
+        setWishlist((prevWishlist) => [...prevWishlist, itemId])
+      }
+    };
+    
+    const wishlistCount = () => {
+      let sum = 0;
+      wishlist.map((itemId) => {
+        if(itemId.isliked){
+          sum++
+        }
+      })
+      return sum;
+    }
   return (
     <div>
       <Card sx={{ maxWidth: 300, maxHeight: 500}}>
@@ -55,14 +74,20 @@ export default function ImgMediaCard(props) {
             </ul>
           </Typography>
         </CardContent>
-        <CardActions>
+        <CardActions >
           <Button size="small" onClick={() => handleBuyButtonClick(itemId)}>Buy</Button>
-          <Button size="small">Chart</Button>
+          <Button size="small"onClick={() => handleChartButton(itemId)}>cart</Button>
+          {wishlist.includes(itemId) ? '❤️' : '♡'}
+         
         </CardActions>
       </Card>
+      
       {formVisible && currentItemId === itemId && (
-        <Form formItems={formItems} apiEndpoint="/item" />
+        <div className='buyForm'>
+        <Form formItems={formItems} apiEndpoint="/item"/>
+        </div>
       )}
+      
     </div>
   );
 }

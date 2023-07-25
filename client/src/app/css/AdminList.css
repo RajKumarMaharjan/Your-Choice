@@ -1,9 +1,17 @@
 .ProductForm{
     margin-left: 400px;
     width: 40vw;
-    padding: 50px;
     align-items: center;
     text-align: center;
-    padding: 40px !important;
+    padding: 20px !important;
+    background-color: rgb(178, 237, 240);
+    border: 1px solid #000;
+    border-radius: 25px;
+    margin-top: 20px;
 }
 
+.AddItem{
+    background-color: #F9A82F !important;
+    border-radius: 25%;
+    padding: 4px;
+}
