@@ -5,7 +5,7 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import Form from '../customsForm/page'
+import Form from '../orderForm/page'
 import '../../css/Card.css'
 
 
@@ -21,10 +21,11 @@ export default function ImgMediaCard(props) {
     const formItems = [
       {label:'Full Name', type:'text'}, 
       {label:'Address', type:'text'}, 
+      {label:'Contact No.', type:'number'}, 
       {label:'Product code', type:'text'},
       {label:'Product Description', type:'text'} 
     ];
-
+  
 
     const handleBuyButtonClick = () => {
        if (currentItemId === itemId){
@@ -43,7 +44,7 @@ export default function ImgMediaCard(props) {
         setWishlist((prevWishlist) => [...prevWishlist, itemId])
       }
     };
-    
+   
     const wishlistCount = () => {
       let sum = 0;
       wishlist.map((itemId) => {
@@ -71,6 +72,7 @@ export default function ImgMediaCard(props) {
               <li>{props.item['Item Color']}</li>
               <li>{props.item['Item Brand']}</li>
               <li>{props.item['Item Description']}</li>
+              <li>{props.item['Item Price']}</li>
             </ul>
           </Typography>
         </CardContent>
@@ -84,7 +86,7 @@ export default function ImgMediaCard(props) {
       
       {formVisible && currentItemId === itemId && (
         <div className='buyForm'>
-        <Form formItems={formItems} apiEndpoint="/item"/>
+        <Form formItems={formItems} apiEndpoint="/orders"/>
         </div>
       )}
       

@@ -7,6 +7,8 @@ import Snackbar from '@mui/material/Snackbar';
 function customsForm(props) {
   const [open, setOpen] = useState(false)
   const [submitMessage, setSubmitMessage] = useState('')
+  const [file, setFile] = useState(null)
+
   const handleClose = (_, reason) => {
     if (reason === 'clickaway') {
       return;
@@ -15,7 +17,7 @@ function customsForm(props) {
     setOpen(false);
   };
 
-  const [file, setFile] = useState(null)
+ 
   const submitFromData = async (values, { resetForm }) => {
  try{
   const form = new FormData();
